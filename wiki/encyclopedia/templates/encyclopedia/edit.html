@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Encyclopedia | Edit {{title}}
+{% endblock %}
+
+{% block body %}
+
+{% if available == True %}
+<div class="alert alert-danger" role="alert">
+    This title already exists. Try a different title.
+</div>
+{%endif%}
+<div class="newpage">
+    <form method="POST">
+        {%csrf_token%}
+
+        <h1>{{title}}</h1>
+        <h5>Edit the Markdown content below</h5>
+        <textarea name="newcontent" class="form-control" autocomplete="off" rows="25">{{content}}</textarea>
+
+        <button type="submit" class="btn btn-outline-primary">Save</button>
+    </form>
+</div>
+
+
+{% endblock %}
